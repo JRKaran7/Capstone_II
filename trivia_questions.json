@@ -1,0 +1,12 @@
+[
+    {
+        "question": "What is the capital of France?",
+        "options": ["Paris", "Berlin", "Madrid", "Rome"],
+        "answer": "Paris"
+    },
+    {
+        "question": "Which landmark is known as the Iron Lady?",
+        "options": ["Statue of Liberty", "Eiffel Tower", "Big Ben", "Colosseum"],
+        "answer": "Eiffel Tower"
+    }
+]
