@@ -2,7 +2,6 @@ import streamlit as st
 from trivia import show_trivia
 from gamification import show_rewards
 from recommendations import get_recommendations
-from weather import show_weather
 from chatbot import start_chatbot
 from group_planning import group_planning
 from virtual_souvenirs import show_souvenirs
@@ -14,7 +13,6 @@ def main():
         "Trivia",
         "Rewards",
         "Recommendations",
-        "Weather",
         "Chatbot",
         "Group Travel Planning",
         "Virtual Souvenirs",
@@ -30,8 +28,6 @@ def main():
         show_rewards()
     elif choice == "Recommendations":
         get_recommendations()
-    elif choice == "Weather":
-        show_weather()
     elif choice == "Chatbot":
         start_chatbot()
     elif choice == "Group Travel Planning":
