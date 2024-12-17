@@ -1,0 +1,11 @@
+Package ID,Destination,Country,Weather,Best Time to Visit,Budget Level,Average Trip Cost ($),Rating,Activities Included,Number of Days,Accommodation Type,Food Included,Transportation Included,Discount Offers,Popularity,Seasonal Variations
+LP01,Lakshadweep,India,Warm and humid,October to March,Budget,400,4.2,"Beach tour, local island visit",3,Budget hotel,Breakfast only,Boat transfers included,5% off for early birds,Moderate,Prices higher in Dec-Jan
+LP02,Lakshadweep,India,Tropical,October to March,Mid-range,800,4.5,"Snorkeling, cultural tour",4,Beachfront cottage,Full board,Boat transfers included,10% off on groups,High,Rainy in June-July
+LP03,Lakshadweep,India,Sunny and warm,November to April,Luxury,1500,4.8,"Scuba diving, private beach dinner",5,Luxury resort,Full board,Flight + boat transfers,No discount,High,Peak prices in peak season
+LP04,Lakshadweep,India,Tropical,October to March,Budget,500,4.1,"Local cultural events, beach walk",4,Budget hotel,Breakfast only,Boat transfers included,5% off for students,Moderate,Low prices in off-season
+LP05,Lakshadweep,India,Tropical,November to April,Mid-range,950,4.6,"Kayaking, snorkeling",5,Seaside villa,Full board,Boat transfers included,8% off for 2+ travelers,High,Increased rates Dec-Jan
+LP06,Lakshadweep,India,Warm and breezy,November to February,Luxury,1600,4.9,"Luxury cruise, scuba diving",6,Premium beach villa,Full board,Flight + boat transfers,15% off for early birds,High,Higher rates in summer
+LP07,Lakshadweep,India,Tropical,December to March,Budget,450,4.0,"Beach walk, nature tour",3,Budget inn,Breakfast only,Boat transfers included,No discount,Moderate,Discounted rates in monsoon
+LP08,Lakshadweep,India,Warm,October to April,Mid-range,850,4.4,"Snorkeling, dolphin watching",4,Comfort hotel,Half board,Boat transfers included,10% off for groups,High,Rates increase in winter
+LP09,Lakshadweep,India,Warm and humid,October to March,Luxury,1400,4.7,"Scuba diving, sunset cruise",5,Luxury villa,Full board,Flight + boat transfers,5% off for members,High,Low availability in peak season
+LP10,Lakshadweep,India,Sunny and dry,November to April,Budget,300,3.8,"Local tour, beach activities",2,Guesthouse,No meals included,Local transfers only,None,Low,Cheapest rates in summer
