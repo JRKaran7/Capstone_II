@@ -29,10 +29,3 @@ def show_souvenirs():
         else:
             st.write(f"Souvenir: {souvenir['caption']}")
             st.write(f"Error: The image file at '{souvenir['image_path']}' could not be found.\n")
-
-# Main function to run the souvenir display
-def main():
-    show_souvenirs()
-
-if __name__ == "__main__":
-    main()
