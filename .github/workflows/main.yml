@@ -1,0 +1,32 @@
+name: Python Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'  # Specify the version you are using
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Verify installation of scikit-learn
+      run: |
+        python -c "import sklearn; print(sklearn.__version__)"
+
+    - name: Run Streamlit app
+      run: |
+        streamlit run app.py --server.headless true
