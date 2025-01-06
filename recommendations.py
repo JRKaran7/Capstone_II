@@ -1,3 +1,4 @@
+import streamlit as st
 import pandas as pd
 import pickle
 from sklearn.ensemble import RandomForestClassifier
@@ -30,29 +31,40 @@ def train_model(data):
 
     return model, label_encoders
 
-# Function to get recommendations based on user input
-def get_recommendations(model, label_encoders, data):
-    print("Travel Package Recommendation System")
+# Streamlit app
+def main():
+    st.title("Travel Package Recommendation System")
+
+    # Load dataset
+    data_file = "Lakshadweep_Travel_Packages.csv"  # Replace with the path to your dataset
+    data = load_data(data_file)
+
+    # Train the model
+    model, label_encoders = train_model(data)
 
     # User inputs
-    print("Select Weather Preference:")
-    for i, weather in enumerate(label_encoders["Weather"].classes_):
-        print(f"{i + 1}. {weather}")
-    weather_choice = int(input("Enter choice (1-{}): ".format(len(label_encoders["Weather"].classes_)))) - 1
-    weather = label_encoders["Weather"].classes_[weather_choice]
+    st.header("Enter Your Preferences")
 
-    print("Select Budget Level:")
-    for i, budget in enumerate(label_encoders["Budget Level"].classes_):
-        print(f"{i + 1}. {budget}")
-    budget_choice = int(input("Enter choice (1-{}): ".format(len(label_encoders["Budget Level"].classes_)))) - 1
-    budget_level = label_encoders["Budget Level"].classes_[budget_choice]
+    # Weather preference
+    weather_options = label_encoders["Weather"].classes_
+    weather_choice = st.selectbox("Select Weather Preference:", weather_options)
+    weather_encoded = label_encoders["Weather"].transform([weather_choice])[0]
 
-    avg_cost = float(input(f"Preferred Average Trip Cost ($) (Min: {data['Average Trip Cost ($)'].min()}, Max: {data['Average Trip Cost ($)'].max()}): "))
-    rating = float(input(f"Minimum Rating (1-5): "))
+    # Budget level
+    budget_options = label_encoders["Budget Level"].classes_
+    budget_choice = st.selectbox("Select Budget Level:", budget_options)
+    budget_encoded = label_encoders["Budget Level"].transform([budget_choice])[0]
 
-    # Encode user inputs
-    weather_encoded = label_encoders["Weather"].transform([weather])[0]
-    budget_encoded = label_encoders["Budget Level"].transform([budget_level])[0]
+    # Average trip cost
+    avg_cost = st.slider(
+        "Preferred Average Trip Cost ($):",
+        min_value=float(data["Average Trip Cost ($)"].min()),
+        max_value=float(data["Average Trip Cost ($)"].max()),
+        value=float(data["Average Trip Cost ($)"].mean())
+    )
+
+    # Minimum rating
+    rating = st.slider("Minimum Rating:", min_value=1.0, max_value=5.0, step=0.1, value=4.0)
 
     # Prepare input for model
     features = pd.DataFrame({
@@ -63,24 +75,13 @@ def get_recommendations(model, label_encoders, data):
     })
 
     # Predict and recommend package
-    predicted_package = model.predict(features)
-    recommended_activities = data[data["Package ID"] == predicted_package[0]]["Activities Included"].values[0]
+    if st.button("Get Recommendation"):
+        predicted_package = model.predict(features)
+        recommended_activities = data[data["Package ID"] == predicted_package[0]]["Activities Included"].values[0]
 
-    print("\nRecommended Package")
-    print(f"We recommend the package **{predicted_package[0]}**:")
-    print(f"Activities Included: {recommended_activities}")
-
-# Main function
-def main():
-    # Load dataset
-    data_file = "Lakshadweep_Travel_Packages.csv"  # Replace with the path to your dataset
-    data = load_data(data_file)
-
-    # Train the model
-    model, label_encoders = train_model(data)
-
-    # Display recommendations
-    get_recommendations(model, label_encoders, data)
+        st.subheader("Recommended Package")
+        st.write(f"We recommend the package **{predicted_package[0]}**:")
+        st.write(f"Activities Included: {recommended_activities}")
 
 # Run the application
 if __name__ == "__main__":
