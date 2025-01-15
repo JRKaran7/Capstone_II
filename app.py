@@ -2,7 +2,7 @@ import streamlit as st
 from trivia import show_trivia
 from gamification import show_rewards
 from recommendations import get_recommendations  # Assuming this imports your recommendations logic
-from chatbot import start_chatbot
+from chatbot import travel_advisor_chatbot
 from group_planning import group_planning
 from virtual_souvenirs import show_souvenirs
 
@@ -29,7 +29,7 @@ def main():
     elif choice == "Recommendations":
         get_recommendations()  # Call to the function that contains the recommendation system
     elif choice == "Chatbot":
-        start_chatbot()
+        travel_advisor_chatbot()
     elif choice == "Group Travel Planning":
         group_planning()
     elif choice == "Virtual Souvenirs":
